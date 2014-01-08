@@ -28,7 +28,7 @@ self.addEventListener('message', function(e) {
         self.postMessage({
           'event': 'progress',
           'row': row,
-          'index': matches.index
+          'progress': matches.index / len
         });
       }
       row = [];
@@ -41,7 +41,8 @@ self.addEventListener('message', function(e) {
     row.push(matched_value);
   }
   self.postMessage({
-    event: 'close'
+    'event': 'close',
+    'progress': 100
   });
   self.close();
 }, false);
